@@ -52,7 +52,7 @@ class Greeting extends Component {
 			this.seconds++
 		}
 		if(this.seconds==60){
-			this.seconds = -0
+			this.seconds = 0
 		}
 		if(this.seconds==0 && milSeconds==0){
 			this.mins++
@@ -60,12 +60,12 @@ class Greeting extends Component {
 		var sec = this.addZeros(this.seconds)
 		var mins = this.addZeros(this.mins)
     	return (
-    		<View>
-      			<View>
-        			<Text>{mins}:{sec}:{milSeconds}</Text>
+    		<View >
+      			<View style={styles.timer}>
+        			<Text style={styles.timerText}>{mins}:{sec}:{milSeconds}</Text>
       			</View>
       			<View style={styles.button}>
-					<Button 
+					<Button  style={styles.buttonText}
 						onPress={()=>{
 							this.buttonPress()
 							}} title={this.state.buttonName}
@@ -85,9 +85,7 @@ export default class MainScreen extends Component{
 			var name = this.buttonName
 		return(
 			<View style={styles.container}>
-				<View style={styles.timer}>
-					<Greeting />
-				</View>
+				<Greeting />
 			</View>
 		);
 	}
@@ -96,18 +94,27 @@ export default class MainScreen extends Component{
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-      	// alignItems: 'center',
+      	alignItems: 'center',
     flex: 1
   },
   button:{
-  		// flexDirection: 'row',
-  	// alignItems: 'center',
-   justifyContent: 'space-between',
-   margin: 20
+  	// flexDirection: 'row',
+  	alignItems: 'center',
+   justifyContent: 'center',
+   flex:1
   },
   timer:{
   		// flexDirection: 'row',
   	alignItems: 'center',
-   justifyContent: 'center',
+   	justifyContent: 'center',
+   	flex:1,
+
+  },
+  timerText:{
+	fontSize: 40,
+  },
+  buttonText:{
+  	fontSize: 20,
   }
+
 });
